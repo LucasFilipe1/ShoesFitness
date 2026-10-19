@@ -840,3 +840,479 @@ footer > p {
         width: 100%;
     }
 }
+
+
+
+/* =========================================================
+   REFATORAÇÃO RESPONSIVA — FLEXBOX, GRID E MOBILE FIRST
+   Complemento compatível com o HTML atual da ShoesFitness
+   ========================================================= */
+
+:root {
+    --sf-orange: #ff4d00;
+    --sf-dark: #111111;
+    --sf-muted: #6b7280;
+    --sf-surface: #ffffff;
+    --sf-page: #f5f7fa;
+    --sf-radius: 16px;
+    --sf-shadow: 0 8px 24px rgba(17, 17, 17, .08);
+}
+
+* {
+    min-width: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* FLEXBOX: cabeçalho, navegação e formulários */
+header table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+header table tbody {
+    display: block;
+}
+
+header table tr {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+}
+
+header table td {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    white-space: normal;
+}
+
+header form,
+#newsletter form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+header input[type="search"] {
+    width: 100%;
+    max-width: 420px;
+}
+
+nav p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 14px;
+}
+
+nav a {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 2px;
+}
+
+/* GRID: banner principal */
+main > section:first-child table {
+    display: block;
+    width: 100%;
+}
+
+main > section:first-child tbody {
+    display: block;
+}
+
+main > section:first-child tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+}
+
+main > section:first-child td {
+    display: block;
+    width: 100%;
+}
+
+main > section:first-child td:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* As tabelas de conteúdo passam a atuar como grids de cards.
+   Os elementos td viram itens independentes do grid. */
+#inicio > section:nth-of-type(2) table,
+#categorias table,
+#produtos table,
+#masculino table,
+#feminino table,
+#corrida table,
+#academia table,
+#casual table,
+#promocoes table,
+#avaliacoes table {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+#inicio > section:nth-of-type(2) tbody,
+#categorias tbody,
+#produtos tbody,
+#masculino tbody,
+#feminino tbody,
+#corrida tbody,
+#academia tbody,
+#casual tbody,
+#promocoes tbody,
+#avaliacoes tbody {
+    display: contents;
+}
+
+#inicio > section:nth-of-type(2) tr,
+#categorias tr,
+#produtos tr,
+#masculino tr,
+#feminino tr,
+#corrida tr,
+#academia tr,
+#casual tr,
+#promocoes tr,
+#avaliacoes tr {
+    display: contents;
+}
+
+#inicio > section:nth-of-type(2) td,
+#categorias td,
+#produtos td,
+#masculino td,
+#feminino td,
+#corrida td,
+#academia td,
+#casual td,
+#promocoes td,
+#avaliacoes td {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    border: 0;
+    border-radius: var(--sf-radius);
+    box-shadow: var(--sf-shadow);
+    transition: transform .28s ease, box-shadow .28s ease, background-color .28s ease;
+}
+
+#inicio > section:nth-of-type(2) td {
+    background: #fff;
+}
+
+#categorias td {
+    height: 100%;
+}
+
+#produtos td p:last-of-type {
+    margin-top: auto;
+}
+
+#produtos td button,
+#masculino td button,
+#feminino td button,
+#corrida td button,
+#academia td button,
+#casual td button,
+#promocoes td button {
+    max-width: 100%;
+}
+
+/* Interações com transform: elevação e escala */
+#categorias td:hover,
+#produtos td:hover,
+#masculino td:hover,
+#feminino td:hover,
+#corrida td:hover,
+#academia td:hover,
+#casual td:hover,
+#promocoes td:hover,
+#avaliacoes td:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 16px 34px rgba(17, 17, 17, .14);
+}
+
+#categorias td h2,
+#produtos td h2,
+#masculino td h2,
+#feminino td h2,
+#corrida td h2,
+#academia td h2,
+#casual td h2,
+#promocoes td h2 {
+    transition: transform .3s ease;
+}
+
+#categorias td:hover h2,
+#produtos td:hover h2,
+#masculino td:hover h2,
+#feminino td:hover h2,
+#corrida td:hover h2,
+#academia td:hover h2,
+#casual td:hover h2,
+#promocoes td:hover h2 {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    transition: color .25s ease, background-color .25s ease, border-color .25s ease,
+                box-shadow .25s ease, transform .25s ease;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(255, 77, 0, .4);
+    outline-offset: 3px;
+}
+
+/* GRID: contato e rodapé */
+#contato table,
+footer table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#contato tbody,
+footer tbody {
+    display: block;
+}
+
+#contato tr,
+footer tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+}
+
+#contato td,
+footer td {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+#contato form {
+    width: 100%;
+}
+
+#contato input,
+#contato select,
+#contato textarea {
+    max-width: 100%;
+}
+
+footer table {
+    max-width: 1200px;
+    padding: 42px 24px;
+}
+
+/* Telas pequenas — base Mobile First (320px+) */
+@media (min-width: 480px) {
+    #categorias table,
+    #produtos table,
+    #masculino table,
+    #feminino table,
+    #corrida table,
+    #academia table,
+    #casual table,
+    #promocoes table {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #avaliacoes table {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #inicio > section:nth-of-type(2) table {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    footer tr {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Tablet — 768px */
+@media (min-width: 768px) {
+    header table tr {
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr) minmax(250px, 1.6fr);
+        align-items: center;
+        gap: 16px;
+    }
+
+    header table td {
+        text-align: left;
+    }
+
+    header table td:last-child {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    header form {
+        flex-wrap: nowrap;
+    }
+
+    nav p {
+        gap: 8px 18px;
+    }
+
+    main > section:first-child tr {
+        grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+        align-items: center;
+        gap: 36px;
+    }
+
+    main > section:first-child td {
+        text-align: left;
+    }
+
+    main > section:first-child td:last-child {
+        text-align: center;
+    }
+
+    #inicio > section:nth-of-type(2) table {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #categorias table,
+    #produtos table,
+    #masculino table,
+    #feminino table,
+    #corrida table,
+    #academia table,
+    #casual table,
+    #promocoes table {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #avaliacoes table {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #contato tr {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+    }
+
+    footer tr {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Notebook / desktop — 1024px */
+@media (min-width: 1024px) {
+    header table tr {
+        grid-template-columns: minmax(200px, 1fr) minmax(300px, 1.5fr) minmax(200px, 1fr);
+    }
+
+    header table td:last-child {
+        grid-column: auto;
+        text-align: right;
+    }
+
+    main > section:first-child tr {
+        gap: 60px;
+    }
+
+    #inicio > section:nth-of-type(2) table {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    #categorias table,
+    #produtos table,
+    #masculino table,
+    #feminino table,
+    #corrida table,
+    #academia table,
+    #casual table,
+    #promocoes table {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    footer tr {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    }
+}
+
+/* Telas largas — 1440px+ */
+@media (min-width: 1440px) {
+    main {
+        max-width: 1320px;
+    }
+
+    main > section {
+        padding: 82px 32px;
+    }
+
+    main > section:first-child {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    #categorias table,
+    #produtos table,
+    #masculino table,
+    #feminino table,
+    #corrida table,
+    #academia table,
+    #casual table,
+    #promocoes table {
+        gap: 20px;
+    }
+}
+
+/* Acessibilidade: reduz movimento quando o sistema solicita */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
