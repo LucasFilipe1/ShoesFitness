@@ -1316,3 +1316,16 @@ footer table {
         transition-duration: .01ms !important;
     }
 }
+
+/* ---------- IMAGENS DOS PRODUTOS ---------- */
+
+.produto-img {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    margin: 0 auto 15px;
+    padding: 12px;
+    background: #eef0f4;
+    border-radius: 12px;
+}
