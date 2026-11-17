@@ -20,7 +20,10 @@ body {
     color: #222;
     line-height: 1.6;
 }
-
+::selection {
+    background: #ff4d00;
+    color: #fff;
+}
 /* ---------- LINKS ---------- */
 
 a {
